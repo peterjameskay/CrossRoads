@@ -28,14 +28,14 @@ class Game:
         is_game_over = False
         did_win = False
         direction = 0
-        player_charater = PlayerCharacter('CrossRoads/player.png', 375, 700, 50, 50)
-        enemy0 = EnemyCharacter('CrossRoads/enemy.png', 20, 600, 50, 50)
+        player_charater = PlayerCharacter('player.png', 375, 700, 50, 50)
+        enemy0 = EnemyCharacter('enemy.png', 20, 400, 50, 50)
         enemy0.speed *= level
-        enemy1 = EnemyCharacter('CrossRoads/enemy.png', 20, 400, 50, 50)
+        enemy1 = EnemyCharacter('enemy.png', 20, 200, 50, 50)
         enemy1.speed *= level
-        enemy2 = EnemyCharacter('CrossRoads/enemy.png', 20, 200, 50, 50)
+        enemy2 = EnemyCharacter('enemy.png', 20, 600, 50, 50)
         enemy2.speed *= level
-        treasure = GameObject('CrossRoads/treasure.png', 375, 50, 50, 50)
+        treasure = GameObject('treasure.png', 375, 50, 50, 50)
         
         while not is_game_over:
             for event in pygame.event.get():
@@ -152,7 +152,7 @@ class EnemyCharacter(GameObject):
             
           
             
-new_game = Game('CrossRoads/background.png', screen_title, screen_width, screen_height)
+new_game = Game('background.png', screen_title, screen_width, screen_height)
 new_game.run_game_loop(1)           
      
        
