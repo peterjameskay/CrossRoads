@@ -60,7 +60,7 @@ class Game:
             enemy0.move(self.width)
             enemy0.draw(self.game_window)
             
-            if level > 3:
+            if level > 2.5:
                 enemy1.move(self.width)
                 enemy1.draw(self.game_window)
             if level > 5:
@@ -75,6 +75,22 @@ class Game:
                 pygame.display.update()
                 clock.tick(1)
                 break
+            elif player_charater.detect_collision(enemy1):
+                is_game_over = True
+                did_win = False
+                text = font.render('You Lose. Try Again.', True, black_color)
+                self.game_window.blit(text, (300, 350))
+                pygame.display.update()
+                clock.tick(1)
+                break
+            elif player_charater.detect_collision(enemy2):
+                is_game_over = True
+                did_win = False
+                text = font.render('You Lose. Try Again.', True, black_color)
+                self.game_window.blit(text, (300, 350))
+                pygame.display.update()
+                clock.tick(1)
+                break            
             elif player_charater.detect_collision(treasure):
                 is_game_over = True
                 did_win = True
@@ -126,13 +142,13 @@ class PlayerCharacter(GameObject):
             self.y_pos = 20
             
     def detect_collision(self, other_body):
-        if self.y_pos > other_body.y_pos + other_body.height:
+        if self.y_pos > other_body.y_pos + other_body.height - 10:
             return False
-        elif self.y_pos + self.height < other_body.y_pos:
+        elif self.y_pos + self.height - 10 < other_body.y_pos:
             return False
-        if self.x_pos > other_body.x_pos + other_body.width:
+        if self.x_pos > other_body.x_pos + other_body.width - 10:
             return False
-        elif self.x_pos + self.width < other_body.x_pos:
+        elif self.x_pos + self.width - 10 < other_body.x_pos:
             return False
         return True
 
